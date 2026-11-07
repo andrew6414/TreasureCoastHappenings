@@ -38,7 +38,7 @@ export default function App() {
  const [section,setSection]=useState('restaurants');
  const [query,setQuery]=useState('');
  const [published,setPublished]=useState('Welcome to Treasure Coast Happenings! Check back for this week’s restaurant specials, live music and local events.');
- useEffect(()=>{fetch('https://raw.githubusercontent.com/andrew6414/TreasureCoastHappenings/main/content/weekly-update.md').then(r=>r.ok?r.text():Promise.reject()).then(t=>setPublished(t.replace(/^#\\s*/, '').replace(/\\n---[\\s\\S]*$/, '').trim())).catch(()=>{});},[]);
+ useEffect(()=>{fetch('https://raw.githubusercontent.com/andrew6414/TreasureCoastHappenings/main/content/weekly-update.md').then(r=>r.ok?r.text():Promise.reject()).then(t=>setPublished(t.replace(/^#\s*/, '').replace(/\n---[\s\S]*$/, '').trim())).catch(()=>{});},[]);
  const [detail,setDetail]=useState(null);
  const active=sections.find(x=>x.id===section);
  const items=useMemo(()=>listings.filter(x=>x.category===section&&(x.name+' '+x.area+' '+(x.description||'')).toLowerCase().includes(query.toLowerCase())),[section,query]);
