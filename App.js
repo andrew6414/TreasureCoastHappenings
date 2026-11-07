@@ -54,7 +54,8 @@ const listingImages = {
  r2: {uri:'https://www.sebastianjamaicanfood.com/images/2007373/0_0.jpg',caption:'Mo Bay Grill official gallery photo',credit:'Mo Bay Grill official website gallery',source:'https://www.sebastianjamaicanfood.com/gallery',actual:true},
  s1: {uri:'https://images.getbento.com/accounts/672b6e857d36c670db1ce70d5392e6f4/media/images/1693856964295.png?auto=compress%2Cformat&fit=max&h=1000&w=1000',caption:'Squid Lips Sebastian official gallery photo',credit:'Squid Lips official website',source:'https://www.squidlipsgrill.com/gallery/sebastian-photo-gallery/',actual:true}
 };
-function listingPhoto(item) {\n if(listingImages[item.id]) return listingImages[item.id];
+function listingPhoto(item) {
+ if(listingImages[item.id]) return listingImages[item.id];
  if(item.category==='music') return PHOTO.music;
  if(item.category==='specials') return PHOTO.food;
  const a=(item.area||'').toLowerCase();
