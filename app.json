@@ -11,6 +11,12 @@
     },
     "android": {
       "package": "com.andrew6414.treasurecoasthappenings"
+    },
+    "web": {
+      "output": "single"
+    },
+    "experiments": {
+      "baseUrl": "/TreasureCoastHappenings"
     }
   }
 }
