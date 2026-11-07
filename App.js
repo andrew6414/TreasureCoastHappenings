@@ -1,47 +1,51 @@
-import React, {useState} from 'react';
-import {View,Text,Image,ScrollView,TextInput,Pressable,StyleSheet} from 'react-native';
+import React, { useMemo, useState } from 'react';
+import { SafeAreaView, ScrollView, View, Text, TextInput, Image, Pressable, StyleSheet, StatusBar, KeyboardAvoidingView, Platform } from 'react-native';
 
-const places = [
-  {name:'Restaurants',type:'Food & Dining',photo:'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=900'},
-  {name:'Food Specials',type:'Local Deals',photo:'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=900'},
-  {name:'Live Music',type:'Entertainment',photo:'https://images.unsplash.com/photo-1501386761578-eac5c94b800a?w=900'},
-  {name:'Weekly Happenings',type:'What’s On',photo:'https://images.unsplash.com/photo-1500375592092-40eb2168fd21?w=900'}
+const C = { ink:'#173E35', green:'#41665A', cream:'#F6F4EC', white:'#FFFFFF', gold:'#B77943', muted:'#71847B', line:'#E3E8E1' };
+const sections = [
+ {id:'restaurants',title:'Restaurants',sub:'Find your next favorite table',photo:'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1000'},
+ {id:'specials',title:'Food & Drink Specials',sub:'Happy hours, deals and local favorites',photo:'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1000'},
+ {id:'music',title:'Live Music',sub:'Discover local performers',photo:'https://images.unsplash.com/photo-1501386761578-eac5c94b800a?w=1000'},
+ {id:'events',title:'Events & Happenings',sub:'Things to do around the coast',photo:'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=1000'}
 ];
+const examples = {
+ restaurants:{title:'Restaurant spotlight',photo:sections[0].photo,description:'A place for a full local restaurant profile, including address, hours, menu, phone number and website.'},
+ specials:{title:'Weekly food special',photo:sections[1].photo,description:'A place for a verified food or drink deal, including days, hours, price and any restrictions.'},
+ music:{title:'Live music listing',photo:sections[2].photo,description:'A place for a confirmed performer, venue, date, start time and event details.'},
+ events:{title:'Local event listing',photo:sections[3].photo,description:'A place for community events, markets, festivals and other things to do.'}
+};
+function Button({label,onPress,outline=false}) { return <Pressable onPress={onPress} style={[s.button,outline&&s.outline]}><Text style={[s.buttonText,outline&&s.outlineText]}>{label}</Text></Pressable>; }
 
-export default function App(){
- const [search,setSearch]=useState('');
- return <ScrollView style={{backgroundColor:'#f5f3eb'}}>
-  <View style={s.hero}>
-   <Text style={s.small}>YOUR LOCAL COASTAL GUIDE</Text>
-   <Text style={s.title}>Treasure Coast{"\n"}Happenings</Text>
-   <Text style={s.sub}>Eat well. Listen local. Explore more.</Text>
-  </View>
-  <TextInput style={s.search} placeholder="Search restaurants, music and events..." value={search} onChangeText={setSearch}/>
-  <Text style={s.heading}>Discover the Coast</Text>
-  {places.filter(p=>p.name.toLowerCase().includes(search.toLowerCase())).map(p=>
-   <Pressable key={p.name} style={s.card}>
-    <Image source={{uri:p.photo}} style={s.image}/>
-    <View style={{padding:16}}>
-     <Text style={s.type}>{p.type}</Text>
-     <Text style={s.name}>{p.name}</Text>
-     <Text style={s.link}>EXPLORE →</Text>
-    </View>
-   </Pressable>
-  )}
-  <Text style={s.footer}>SEBASTIAN • VERO BEACH • MELBOURNE</Text>
- </ScrollView>
+export default function App() {
+ const [screen,setScreen]=useState('home');
+ const [section,setSection]=useState('restaurants');
+ const [query,setQuery]=useState('');
+ const [weekly,setWeekly]=useState('Welcome to Treasure Coast Happenings! Check back for this week’s restaurant specials, live music and local events.');
+ const [published,setPublished]=useState('Welcome to Treasure Coast Happenings! Check back for this week’s restaurant specials, live music and local events.');
+ const [detail,setDetail]=useState(null);
+ const active=sections.find(x=>x.id===section);
+ const items=useMemo(()=>[{id:section,name:examples[section].title,area:'Treasure Coast',...examples[section]}].filter(x=>(x.name+' '+x.area).toLowerCase().includes(query.toLowerCase())),[section,query]);
+ const home=()=>{setScreen('home');setQuery('');};
+ const open=(id)=>{setSection(id);setQuery('');setScreen('list');};
+ return <SafeAreaView style={s.safe}><StatusBar barStyle="dark-content"/>
+  <View style={s.header}><Pressable onPress={home}><Text style={s.brand}>TREASURE COAST <Text style={{color:C.gold}}>HAPPENINGS</Text></Text></Pressable><Pressable onPress={()=>setScreen('weekly')}><Text style={s.headerLink}>WEEKLY UPDATE</Text></Pressable></View>
+  {screen==='home'&&<ScrollView showsVerticalScrollIndicator={false}>
+   <View style={s.hero}><Text style={s.eyebrow}>YOUR LOCAL COASTAL GUIDE</Text><Text style={s.heroTitle}>Good food.{'\n'}Great music.{'\n'}What's happening.</Text><Text style={s.heroCopy}>Discover restaurants, food specials, live music and things to do across Florida’s Treasure Coast.</Text><Button label="EXPLORE HAPPENINGS  →" onPress={()=>open('events')}/></View>
+   <View style={s.sectionHead}><Text style={s.heading}>Discover the Coast</Text><Text style={s.muted}>A little something for every day.</Text></View>
+   {sections.map(x=><Pressable key={x.id} onPress={()=>open(x.id)} style={s.tile}><Image source={{uri:x.photo}} style={s.tileImage}/><View style={s.shade}/><View style={s.tileText}><Text style={s.tileTitle}>{x.title}</Text><Text style={s.tileSub}>{x.sub}</Text><Text style={s.tileLink}>EXPLORE  →</Text></View></Pressable>)}
+   <View style={s.weekCard}><Text style={s.eyebrow}>FROM THE EDITOR</Text><Text style={s.weekTitle}>This Week on the Coast</Text><Text style={s.copy}>{published}</Text><Button label="READ WEEKLY UPDATE" outline onPress={()=>setScreen('weekly')}/></View>
+   <Text style={s.footer}>SEBASTIAN  •  VERO BEACH  •  FORT PIERCE  •  STUART</Text>
+  </ScrollView>}
+  {screen==='list'&&<ScrollView contentContainerStyle={s.page}><Pressable onPress={home}><Text style={s.back}>← BACK HOME</Text></Pressable><Text style={s.pageTitle}>{active.title}</Text><Text style={s.copy}>Explore local places and happenings across the Treasure Coast.</Text><TextInput value={query} onChangeText={setQuery} placeholder="Search this section..." placeholderTextColor={C.muted} style={s.search}/>{items.map(x=><Pressable key={x.id} style={s.card} onPress={()=>{setDetail(x);setScreen('detail')}}><Image source={{uri:x.photo}} style={s.cardImage}/><View style={s.cardBody}><Text style={s.tag}>STARTER LISTING</Text><Text style={s.cardTitle}>{x.name}</Text><Text style={s.muted}>{x.area}</Text><Text style={s.link}>VIEW DETAILS  →</Text></View></Pressable>)}<Text style={s.disclaimer}>These are sample placeholders, not confirmed current listings. Verify business details, offers, performers and event dates before publishing.</Text></ScrollView>}
+  {screen==='detail'&&detail&&<ScrollView contentContainerStyle={s.page}><Pressable onPress={()=>setScreen('list')}><Text style={s.back}>← BACK TO LISTINGS</Text></Pressable><Image source={{uri:detail.photo}} style={s.detailImage}/><Text style={s.tag}>STARTER LISTING</Text><Text style={s.pageTitle}>{detail.name}</Text><Text style={s.muted}>{detail.area}</Text><Text style={s.copy}>{detail.description}</Text><View style={s.notice}><Text style={s.noticeTitle}>Before publishing</Text><Text style={s.copy}>Add verified details, address, hours, contact information, dates, prices and a real business or event link.</Text></View><Button label="BACK TO LISTINGS" outline onPress={()=>setScreen('list')}/></ScrollView>}
+  {screen==='weekly'&&<KeyboardAvoidingView style={{flex:1}} behavior={Platform.OS==='ios'?'padding':undefined}><ScrollView contentContainerStyle={s.page} keyboardShouldPersistTaps="handled"><Pressable onPress={home}><Text style={s.back}>← BACK HOME</Text></Pressable><Text style={s.eyebrow}>THE EDITOR'S CORNER</Text><Text style={s.pageTitle}>Weekly Happenings</Text><Text style={s.copy}>Write your weekly update for locals and visitors.</Text><Text style={s.field}>THIS WEEK'S UPDATE</Text><TextInput multiline textAlignVertical="top" value={weekly} onChangeText={setWeekly} style={s.editor} placeholder="What's happening on the Treasure Coast this week?"/><Button label="SAVE WEEKLY UPDATE" onPress={()=>{setPublished(weekly.trim()||'Check back soon for this week’s happenings.');home();}}/><Text style={s.disclaimer}>This first version saves the update only while the app is open. Shared publishing across everyone's phones requires an online database and a secure editor login.</Text><View style={s.notice}><Text style={s.noticeTitle}>Saved update preview</Text><Text style={s.copy}>{published}</Text></View></ScrollView></KeyboardAvoidingView>}
+  <View style={s.nav}>{[['⌂','HOME',home],['♨','SPECIALS',()=>open('specials')],['♫','MUSIC',()=>open('music')],['✎','WEEKLY',()=>setScreen('weekly')]].map(([icon,label,fn])=><Pressable key={label} onPress={fn} style={s.navItem}><Text style={s.navIcon}>{icon}</Text><Text style={s.navLabel}>{label}</Text></Pressable>)}</View>
+ </SafeAreaView>;
 }
 const s=StyleSheet.create({
- hero:{backgroundColor:'#dce9df',padding:28,paddingTop:65},
- small:{letterSpacing:2,color:'#41665a',fontWeight:'bold'},
- title:{fontSize:39,fontWeight:'900',color:'#173e35',marginTop:15},
- sub:{fontSize:15,color:'#41665a',marginTop:12},
- search:{backgroundColor:'white',margin:18,padding:16,borderRadius:12},
- heading:{fontSize:24,fontWeight:'bold',color:'#173e35',margin:18},
- card:{backgroundColor:'white',marginHorizontal:18,marginBottom:18,borderRadius:16,overflow:'hidden'},
- image:{width:'100%',height:190},
- type:{color:'#638276',fontWeight:'bold',fontSize:12},
- name:{fontSize:23,fontWeight:'bold',color:'#173e35',marginTop:5},
- link:{color:'#a66b37',fontWeight:'bold',marginTop:12},
- footer:{textAlign:'center',padding:25,color:'#527166',fontWeight:'bold'}
+ safe:{flex:1,backgroundColor:C.cream},header:{minHeight:56,paddingHorizontal:17,flexDirection:'row',alignItems:'center',justifyContent:'space-between',borderBottomWidth:1,borderColor:C.line},brand:{fontSize:11,fontWeight:'900',letterSpacing:1,color:C.ink},headerLink:{fontSize:9,fontWeight:'900',letterSpacing:1,color:C.green},
+ hero:{backgroundColor:'#DCE9DF',padding:24,paddingTop:40,paddingBottom:34},eyebrow:{fontSize:10,letterSpacing:2,fontWeight:'900',color:C.green},heroTitle:{fontSize:39,lineHeight:43,fontWeight:'900',color:C.ink,marginTop:15},heroCopy:{fontSize:14,lineHeight:22,color:C.green,marginTop:14,marginBottom:18},button:{alignSelf:'flex-start',backgroundColor:C.ink,paddingHorizontal:17,paddingVertical:13,borderRadius:24,marginTop:13},buttonText:{fontSize:10,fontWeight:'900',letterSpacing:1,color:C.white},outline:{backgroundColor:'transparent',borderWidth:1,borderColor:C.green},outlineText:{color:C.green},
+ sectionHead:{paddingHorizontal:19,paddingTop:27,paddingBottom:12},heading:{fontSize:25,fontWeight:'900',color:C.ink},muted:{fontSize:12,color:C.muted,marginTop:5},tile:{height:185,marginHorizontal:15,marginBottom:14,borderRadius:15,overflow:'hidden',backgroundColor:'#B9C9BE'},tileImage:{width:'100%',height:'100%',position:'absolute'},shade:{...StyleSheet.absoluteFillObject,backgroundColor:'rgba(8,28,22,0.43)'},tileText:{flex:1,justifyContent:'flex-end',padding:19},tileTitle:{fontSize:24,fontWeight:'900',color:C.white},tileSub:{fontSize:12,color:C.white,marginTop:4},tileLink:{fontSize:10,fontWeight:'900',letterSpacing:1,color:'#F2D6B7',marginTop:11},
+ weekCard:{margin:15,padding:19,borderRadius:15,backgroundColor:'#E8EDE4'},weekTitle:{fontSize:22,fontWeight:'900',color:C.ink,marginTop:8},copy:{fontSize:14,lineHeight:22,color:'#52685E',marginTop:8},footer:{textAlign:'center',padding:22,color:C.muted,fontSize:9,fontWeight:'900',letterSpacing:1},
+ page:{padding:19,paddingBottom:32},back:{fontSize:10,fontWeight:'900',letterSpacing:1,color:C.green,marginBottom:19},pageTitle:{fontSize:30,lineHeight:36,fontWeight:'900',color:C.ink,marginTop:8},search:{backgroundColor:C.white,borderWidth:1,borderColor:C.line,borderRadius:11,padding:14,color:C.ink,marginTop:17,marginBottom:17},card:{backgroundColor:C.white,borderRadius:14,overflow:'hidden',marginBottom:15},cardImage:{width:'100%',height:165},cardBody:{padding:15},tag:{fontSize:10,fontWeight:'900',letterSpacing:1,color:C.gold},cardTitle:{fontSize:20,fontWeight:'900',color:C.ink,marginTop:6},link:{fontSize:10,fontWeight:'900',letterSpacing:1,color:C.green,marginTop:13},disclaimer:{fontSize:11,lineHeight:17,color:C.muted,marginTop:17},detailImage:{width:'100%',height:215,borderRadius:14,marginBottom:17},notice:{backgroundColor:'#E8EDE4',padding:15,borderRadius:12,marginVertical:18},noticeTitle:{fontSize:15,fontWeight:'900',color:C.ink},field:{fontSize:10,fontWeight:'900',letterSpacing:1,color:C.green,marginTop:24,marginBottom:9},editor:{minHeight:185,backgroundColor:C.white,borderColor:C.line,borderWidth:1,borderRadius:12,padding:14,color:C.ink,fontSize:15,lineHeight:22},nav:{minHeight:60,backgroundColor:C.white,borderTopWidth:1,borderColor:C.line,flexDirection:'row',alignItems:'center',justifyContent:'space-around'},navItem:{flex:1,alignItems:'center',paddingVertical:6},navIcon:{fontSize:19,color:C.green},navLabel:{fontSize:8,fontWeight:'900',letterSpacing:1,color:C.muted,marginTop:2}
 });
