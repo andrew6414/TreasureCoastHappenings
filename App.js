@@ -68,7 +68,7 @@ export default function App() {
    const eventDate=new Date(x.date||'');
    if(Number.isNaN(eventDate.getTime())) return false;
    const dateOnly=new Date(eventDate.getFullYear(),eventDate.getMonth(),eventDate.getDate());
-   if(musicFilter==='tonight') return dateOnly.getTime()===today.getTime();
+   if(musicFilter==='tonight') return dateOnly.getTime()===today.getTime()&&(!x.time||/([5-9]|1[0-2])(?::[0-5][0-9])?\\s*PM/i.test(x.time));
    return dateOnly>=weekendStart&&dateOnly<=weekendEnd;
   });
  },[section,query,musicFilter]);
