@@ -53,6 +53,9 @@ const listingImages = {
  r1: {uri:'https://images.getbento.com/accounts/672b6e857d36c670db1ce70d5392e6f4/media/images/1693856964295.png?auto=compress%2Cformat&fit=max&h=1000&w=1000',caption:'Squid Lips Sebastian official gallery photo',credit:'Squid Lips official website',source:'https://www.squidlipsgrill.com/gallery/sebastian-photo-gallery/',actual:true},
  r2: {uri:'https://www.sebastianjamaicanfood.com/images/2007373/0_0.jpg',caption:'Mo Bay Grill official gallery photo',credit:'Mo Bay Grill official website gallery',source:'https://www.sebastianjamaicanfood.com/gallery',actual:true},
  s1: {uri:'https://images.getbento.com/accounts/672b6e857d36c670db1ce70d5392e6f4/media/images/1693856964295.png?auto=compress%2Cformat&fit=max&h=1000&w=1000',caption:'Squid Lips Sebastian official gallery photo',credit:'Squid Lips official website',source:'https://www.squidlipsgrill.com/gallery/sebastian-photo-gallery/',actual:true}
+ r4: {uri:'https://popmenucloud.com/cdn-cgi/image/width%3D1200%2Cheight%3D1200%2Cfit%3Dscale-down%2Cformat%3Dauto%2Cquality%3D60/sthngxuv/f0391f03-5269-4262-ae4b-639ef4974179.jpg',caption:'Sebastian Saltwater official restaurant photo',credit:'Sebastian Saltwater official website',source:'https://www.sebastiansaltwater.com/',actual:true},
+ r6: {uri:'https://images.squarespace-cdn.com/content/v1/5cdae2877fdcb86c3579c654/1680556620696-UXV7KLYNO4V99Z1D4GCT/Cobbs%2Bdrone%2B4.jpg',caption:'Cobb’s Landing official restaurant photo',credit:'Cobb’s Landing official website',source:'https://www.cobbs-landing.com/',actual:true},
+ r7: {uri:'https://www.ocean-grill.com/images/Ocean-Grill-red-and-white.jpg?height=auto&shrink=&width=800',caption:'Ocean Grill official exterior photo',credit:'Ocean Grill official photo gallery',source:'https://www.ocean-grill.com/photos/',actual:true}
 };
 function listingPhoto(item) {
  if(listingImages[item.id]) return listingImages[item.id];
