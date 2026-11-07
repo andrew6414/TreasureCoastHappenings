@@ -1,0 +1,59 @@
+name: Submit a restaurant special
+description: Send us a food, drink, or happy-hour offer to review for Treasure Coast Happenings.
+title: "Special submission: "
+labels: ["special-submission"]
+body:
+  - type: markdown
+    attributes:
+      value: "Thanks for helping local diners discover great offers! Submissions are reviewed before they appear in the app. Do not submit private customer information."
+  - type: input
+    id: business
+    attributes:
+      label: Business name
+      placeholder: Restaurant or bar name
+    validations:
+      required: true
+  - type: input
+    id: location
+    attributes:
+      label: City and address
+      placeholder: Sebastian, FL
+    validations:
+      required: true
+  - type: input
+    id: offer
+    attributes:
+      label: What is the special?
+      placeholder: Example: $2 off draft beer
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: Days, times, restrictions, and details
+      description: Include exact days, start/end times, price, exclusions, and expiration date.
+      placeholder: Monday–Friday, 3–6 PM; dine-in only; ends...
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Official website or public post confirming the offer
+      placeholder: https://...
+    validations:
+      required: true
+  - type: input
+    id: contact
+    attributes:
+      label: Business contact name and public contact method
+      description: Used only to verify the submission.
+      placeholder: Manager name, business phone, or business email
+    validations:
+      required: true
+  - type: checkboxes
+    id: permission
+    attributes:
+      label: Confirmation
+      options:
+        - label: I am authorized to submit this offer, and the information is accurate to the best of my knowledge.
+          required: true
