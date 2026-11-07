@@ -1,0 +1,16 @@
+{
+  "expo": {
+    "name": "Treasure Coast Happenings",
+    "slug": "treasure-coast-happenings",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.andrew6414.treasurecoasthappenings"
+    },
+    "android": {
+      "package": "com.andrew6414.treasurecoasthappenings"
+    }
+  }
+}
