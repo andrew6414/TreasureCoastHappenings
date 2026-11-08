@@ -3,9 +3,9 @@ import { SafeAreaView, ScrollView, View, Text, TextInput, Image, Pressable, Styl
 
 const C = { ink:'#173E35', green:'#41665A', cream:'#F6F4EC', white:'#FFFFFF', gold:'#B77943', muted:'#71847B', line:'#E3E8E1' };
 const sections = [
- {id:'restaurants',title:'Restaurants',sub:'Find your next favorite table'},
  {id:'specials',title:'Food & Drink Specials',sub:'Happy hours, deals and local favorites'},
- {id:'music',title:'Live Music',sub:'Discover local performers'},
+ {id:'music',title:'Live Music',sub:'Find a show happening near you'},
+ {id:'restaurants',title:'Restaurants',sub:'Find your next favorite table'},
  {id:'events',title:'Events & Happenings',sub:'Things to do around the coast'}
 ];
 
