@@ -217,12 +217,6 @@ const listings = [
 
 const areas = ['Sebastian', 'Vero Beach'];
 
-const PHOTO = {
- sebastian: {uri:'https://commons.wikimedia.org/wiki/Special:FilePath/SebastianInletStatePark.jpg?width=1100',caption:'Sebastian Inlet area photo',credit:'Stephen Lea — CC BY-SA 2.5',source:'https://commons.wikimedia.org/wiki/File:SebastianInletStatePark.jpg'},
- vero: {uri:'https://commons.wikimedia.org/wiki/Special:FilePath/Beach_access_at_Vero_Beach,_Florida.jpg?width=1100',caption:'Vero Beach area photo',credit:'Robert Lawton — CC BY-SA 2.5',source:'https://commons.wikimedia.org/wiki/File:Beach_access_at_Vero_Beach,_Florida.jpg'},
- food: {uri:'https://commons.wikimedia.org/wiki/Special:FilePath/Seafood_on_platter.jpg?width=1100',caption:'Illustrative seafood photo',credit:'Shellfish2008 — Public domain',source:'https://commons.wikimedia.org/wiki/File:Seafood_on_platter.jpg'},
- music: {uri:'https://commons.wikimedia.org/wiki/Special:FilePath/Music_band_performs_on_stage_during_a_live_concert.jpg?width=1100',caption:'Illustrative live music photo',credit:'Shixart1985 — CC BY 2.0',source:'https://commons.wikimedia.org/wiki/File:Music_band_performs_on_stage_during_a_live_concert.jpg'}
-};
 const listingImages = {
  r1: {uri:'https://images.getbento.com/accounts/672b6e857d36c670db1ce70d5392e6f4/media/images/1693856964295.png?auto=compress%2Cformat&fit=max&h=1000&w=1000',caption:'Squid Lips Sebastian official gallery photo',credit:'Squid Lips official website',source:'https://www.squidlipsgrill.com/gallery/sebastian-photo-gallery/',actual:true},
  r2: {uri:'https://www.sebastianjamaicanfood.com/images/2007373/0_0.jpg',caption:'Mo Bay Grill official gallery photo',credit:'Mo Bay Grill official website gallery',source:'https://www.sebastianjamaicanfood.com/gallery',actual:true},
