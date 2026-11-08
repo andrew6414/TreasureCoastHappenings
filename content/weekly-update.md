@@ -1,6 +1,6 @@
 # This Week on the Treasure Coast
 
-Welcome to your local guide to good food, live music and things to do from Sebastian to Stuart.
+Welcome to your local guide to good food, live music and things to do in Sebastian and Vero Beach.
 
 ## This week's music picks
 
@@ -13,13 +13,13 @@ Open each music listing for its venue calendar or event source before heading ou
 
 ## Food and drink ideas
 
-Check the Food & Drink Specials section for advertised offers from local favorites, including Squid Lips in Sebastian, Chive in Vero Beach, Talkhouse and South Fork Kitchen in Stuart, and On the Edge in Fort Pierce. Each listing includes days, times and restrictions when provided by the restaurant.
+Check the Food & Drink Specials section for advertised offers from local favorites, including Squid Lips in Sebastian and Chive in Vero Beach. Each listing includes days, times and restrictions when provided by the restaurant.
 
 ## Help us keep the coast happening
 
 Know about a restaurant special, happy hour, band or community event? Send us the business or venue name, date, time, address and an official event or menu link. Photos are welcome when you have permission to share them.
 
-**Have a great week on the Treasure Coast!**
+**Have a great week in Sebastian and Vero Beach!**
 
 ---
 
