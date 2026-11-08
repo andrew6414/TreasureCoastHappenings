@@ -91,9 +91,7 @@ const areas = ['Sebastian', 'Vero Beach'];
 
 const PHOTO = {
  sebastian: {uri:'https://commons.wikimedia.org/wiki/Special:FilePath/SebastianInletStatePark.jpg?width=1100',caption:'Sebastian Inlet area photo',credit:'Stephen Lea — CC BY-SA 2.5',source:'https://commons.wikimedia.org/wiki/File:SebastianInletStatePark.jpg'},
- fortpierce: {uri:'https://commons.wikimedia.org/wiki/Special:FilePath/Fort_Pierce_beach_looking_south_at_Jetty_Park.jpeg?width=1100',caption:'Fort Pierce area photo',credit:'Dough4872 — CC BY-SA 4.0',source:'https://commons.wikimedia.org/wiki/File:Fort_Pierce_beach_looking_south_at_Jetty_Park.jpeg'},
  vero: {uri:'https://commons.wikimedia.org/wiki/Special:FilePath/Beach_access_at_Vero_Beach,_Florida.jpg?width=1100',caption:'Vero Beach area photo',credit:'Robert Lawton — CC BY-SA 2.5',source:'https://commons.wikimedia.org/wiki/File:Beach_access_at_Vero_Beach,_Florida.jpg'},
- stuart: {uri:'https://commons.wikimedia.org/wiki/Special:FilePath/St_Lucie_River_from_Stuart_Riverwalk_in_Stuart_FL.jpeg?width=1100',caption:'Stuart area photo',credit:'Dough4872 — CC BY-SA 4.0',source:'https://commons.wikimedia.org/wiki/File:St_Lucie_River_from_Stuart_Riverwalk_in_Stuart_FL.jpeg'},
  food: {uri:'https://commons.wikimedia.org/wiki/Special:FilePath/Seafood_on_platter.jpg?width=1100',caption:'Illustrative seafood photo',credit:'Shellfish2008 — Public domain',source:'https://commons.wikimedia.org/wiki/File:Seafood_on_platter.jpg'},
  music: {uri:'https://commons.wikimedia.org/wiki/Special:FilePath/Music_band_performs_on_stage_during_a_live_concert.jpg?width=1100',caption:'Illustrative live music photo',credit:'Shixart1985 — CC BY 2.0',source:'https://commons.wikimedia.org/wiki/File:Music_band_performs_on_stage_during_a_live_concert.jpg'}
 };
@@ -126,9 +124,7 @@ function listingPhoto(item) {
  if(item.category==='music') return PHOTO.music;
  if(item.category==='specials') return PHOTO.food;
  const a=(item.area||'').toLowerCase();
- if(a.includes('fort pierce')) return PHOTO.fortpierce;
  if(a.includes('vero')) return PHOTO.vero;
- if(a.includes('stuart')) return PHOTO.stuart;
  return PHOTO.sebastian;
 }
 
@@ -155,9 +151,7 @@ function ListingImage({item,style}) {
  const area=(item.area||'').toLowerCase();
  const fallback=item.category==='music'?PHOTO.music:
   item.category==='specials'?PHOTO.food:
-  area.includes('fort pierce')?PHOTO.fortpierce:
-  area.includes('vero')?PHOTO.vero:
-  area.includes('stuart')?PHOTO.stuart:PHOTO.sebastian;
+  area.includes('vero')?PHOTO.vero:PHOTO.sebastian;
  const [useFallback,setUseFallback]=useState(false);
  return <Image source={{uri:(useFallback?fallback:photo).uri}} style={style} resizeMode="cover" onError={()=>setUseFallback(true)}/>;
 }
