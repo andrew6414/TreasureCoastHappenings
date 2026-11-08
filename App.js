@@ -16,15 +16,7 @@ const listings = [
  {id:'r3',category:'restaurants',name:'Mulligan’s Beach House',area:'Sebastian',address:'806 Indian River Dr, Sebastian, FL 32958',phone:'(772) 783-6727',description:'Casual waterfront restaurant and sports bar by River View Park, serving breakfast, lunch and dinner favorites.',source:'',sourceLabel:''},
  {id:'r4',category:'restaurants',name:'Sebastian Saltwater',area:'Sebastian',address:'1732 Indian River Dr, Sebastian, FL 32958',phone:'(772) 918-4229',description:'Waterfront marina restaurant with a broad menu of seafood, burgers, chicken and other casual dining options.',source:'',sourceLabel:''},
  {id:'r7',category:'restaurants',name:'Ocean Grill',area:'Vero Beach',address:'1050 Beachland Blvd, Vero Beach, FL 32963',phone:'(772) 231-5409',description:'Longstanding oceanfront Vero Beach restaurant known for seafood, steak and its distinctive historic atmosphere.',source:'',sourceLabel:''},
- {id:'m1',category:'music',name:'REZEN8',area:'Earl’s Hideaway • Sebastian',date:'Saturday, November 7, 2026',time:'8:00 PM',address:'1405 Indian River Dr, Sebastian, FL 32958',description:'Live music at Earl’s Hideaway Lounge. Check the venue calendar before heading out in case of schedule changes.',source:'https://earlshideaway.com/page.php?p=events',sourceLabel:'Earl’s event calendar'},
  {id:'m2',category:'music',name:'Stacy Mitchhart',area:'Earl’s Hideaway • Sebastian',date:'Sunday, November 8, 2026',time:'2:00 PM',address:'1405 Indian River Dr, Sebastian, FL 32958',description:'Afternoon live music at Earl’s Hideaway Lounge.',source:'https://earlshideaway.com/page.php?p=events',sourceLabel:'Earl’s event calendar'},
- {id:'m3',category:'music',name:'Kris Olsen & The Banned',area:'Earl’s Hideaway • Sebastian',date:'Thursday, November 12, 2026',time:'6:00 PM',address:'1405 Indian River Dr, Sebastian, FL 32958',description:'Live band performance at Earl’s Hideaway Lounge.',source:'https://earlshideaway.com/page.php?p=events',sourceLabel:'Earl’s event calendar'},
- {id:'m4',category:'music',name:'American Highway',area:'Earl’s Hideaway • Sebastian',date:'Friday, November 13, 2026',time:'8:00 PM',address:'1405 Indian River Dr, Sebastian, FL 32958',description:'Live music at Earl’s Hideaway Lounge.',source:'https://earlshideaway.com/page.php?p=events',sourceLabel:'Earl’s event calendar'},
- {id:'m5',category:'music',name:'Three O’Clock Storm',area:'Earl’s Hideaway • Sebastian',date:'Saturday, November 14, 2026',time:'2:00 PM',address:'1405 Indian River Dr, Sebastian, FL 32958',description:'Afternoon live music at Earl’s Hideaway Lounge.',source:'https://earlshideaway.com/page.php?p=events',sourceLabel:'Earl’s event calendar'},
- {id:'m6',category:'music',name:'Barfly',area:'Earl’s Hideaway • Sebastian',date:'Saturday, November 14, 2026',time:'8:00 PM',address:'1405 Indian River Dr, Sebastian, FL 32958',description:'Evening live music at Earl’s Hideaway Lounge.',source:'https://earlshideaway.com/page.php?p=events',sourceLabel:'Earl’s event calendar'},
- {id:'m8',category:'music',name:'Vero Typewriter',area:'Earl’s Hideaway • Sebastian',date:'Saturday, November 7, 2026',time:'2:00 PM',address:'1405 Indian River Dr, Sebastian, FL 32958',description:'Afternoon live performance at Earl’s Hideaway Lounge. Listed on the venue’s official event calendar.',source:'https://earlshideaway.com/events/',sourceLabel:'Earl’s official event calendar'},
- {id:'m9',category:'music',name:'Panama',area:'Captain Hiram’s • Sebastian',date:'Saturday, November 7, 2026',time:'7:30 PM – 11:30 PM',address:'1580 US-1, Sebastian, FL 32958',description:'Rock performance at Captain Hiram’s Resort. Event listing reports an evening set; confirm details with the venue before heading out.',source:'https://www.treasurecoastlivegigs.com/events?DateValue=2026-11-07&includeNearby=False',sourceLabel:'Treasure Coast live music calendar'},
- {id:'m10',category:'music',name:'The Mighty Flea Circus',area:'Waldo’s • Vero Beach',date:'Saturday, November 7, 2026',time:'5:00 PM – 9:00 PM',description:'Swing and rockabilly band at Waldo’s Bonfire in Vero Beach. Check with the venue for admission and event details.',source:'https://www.treasurecoastlivegigs.com/events?DateValue=2026-11-07&includeNearby=False',sourceLabel:'Treasure Coast live music calendar'},
  {id:'m13',category:'music',name:'HairPeace',area:'Waldo’s • Vero Beach',date:'Sunday, November 8, 2026',time:'1:00 PM – 6:00 PM',description:'Afternoon acoustic duo performance at Waldo’s in Vero Beach.',source:'https://www.treasurecoastlivegigs.com/events?DateValue=2026-11-08&includeNearby=False',sourceLabel:'Treasure Coast live music calendar'},
  {id:'e1',category:'events',name:'Live music at Earl’s Hideaway',area:'Sebastian',date:'Multiple dates in November 2026',address:'1405 Indian River Dr, Sebastian, FL 32958',description:'Earl’s Hideaway publishes a regular live music calendar with afternoon and evening performances. Open the official calendar for the latest lineup.',source:'https://earlshideaway.com/page.php?p=events',sourceLabel:'Official event calendar'},
  {id:'s1',category:'specials',name:'Squid Lips — Weekly Food Specials & Happy Hour',area:'Sebastian',address:'1660 Indian River Dr, Sebastian, FL 32958',phone:'(772) 589-3828',description:'MONDAY: Double order of fish & chips for $15.99 after 4 PM. TUESDAY: Mountain of shrimp for $15.99 after 4 PM. WEDNESDAY: Chicken-n-chips basket for $9.99 after 4 PM. THURSDAY: Mussels for $8.99 after 4 PM. Daily happy hour: $1 off well drinks and wines, 2–5 PM. Food specials require a beverage purchase and are dine-in only. Confirm availability before visiting.',source:'https://www.squidlipsgrill.com/overwater-grill-weekly-special/',sourceLabel:'Official specials page'},
@@ -203,6 +195,24 @@ const listings = [
  {id:'s29',category:'specials',name:'The Italian Cousin — Early-Bird Italian Dinner',area:'Sebastian',address:'480 US Highway 1, Sebastian, FL 32958',phone:'(772) 589-1412',featuredDays:[1,2,3,4,5,6],description:'MONDAY–FRIDAY, 4–5:15 PM; SATURDAY, 4–5 PM: Choose from selected Italian dinners for $22.95, with baked ciabatta bread, dipping oil and choice of soup or house salad. Menu choices and price may change; reservations are recommended.',source:'https://www.sebastiandaily.com/restaurants/popular-restaurant-specials-from-sebastian-to-grant-valkaria-96070/',sourceLabel:'Sebastian Daily weekly specials guide; verify with restaurant'},
  {id:'s30',category:'specials',name:'Mulligan’s Beach House — Thursday Kids Eat Free',area:'Sebastian',address:'806 Indian River Dr, Sebastian, FL 32958',phone:'(772) 783-6727',featuredDays:[4],description:'THURSDAY: Kids-eat-free offer is listed with purchase of an adult meal. Ask the restaurant about age limits, eligible children’s meals, dine-in rules and current terms. Daily happy hour is also listed from 1–7 PM.',source:'https://www.vibeanddine.com/sebastian-restaurant-bar-specials',sourceLabel:'Local weekly specials guide; verify with restaurant'},
 
+
+ {id:'m83',category:'music',name:'Bob Hughes',area:'Capt Hiram’s Sandbar • Sebastian',date:'Monday, November 30, 2026',time:'4:00 PM',address:'1580 US-1, Sebastian, FL 32958',description:'Live music at the Sandbar stage. Listed on Capt Hiram’s official November events calendar.',source:'https://hirams.com/events/',sourceLabel:'Capt Hiram’s official event calendar'},
+ {id:'m84',category:'music',name:'Open Jam Night',area:'Tiki Bar & Grill • Sebastian',date:'Monday, November 16, 2026',time:'6:00 PM – 10:00 PM',address:'1130 Indian River Dr, Sebastian, FL 32958',description:'Weekly community open jam night at Tiki Bar & Grill. Check the venue for schedule changes.',source:'https://business.sebastianchamber.com/community-calendar',sourceLabel:'Sebastian River Area Chamber calendar'},
+ {id:'m85',category:'music',name:'DJ Big B',area:'Tiki Bar & Grill • Sebastian',date:'Tuesday, November 17, 2026',time:'6:00 PM – 10:00 PM',address:'1130 Indian River Dr, Sebastian, FL 32958',description:'DJ Big B on stage at Tiki Bar & Grill. Listed as a recurring Tuesday event on the Chamber calendar.',source:'https://business.sebastianchamber.com/community-calendar',sourceLabel:'Sebastian River Area Chamber calendar'},
+ {id:'m86',category:'music',name:'Open Mic with Robert & Friends',area:'Pareidolia Brewing Company • Sebastian',date:'Wednesday, November 18, 2026',time:'6:00 PM – 9:00 PM',address:'712 Cleveland St, Sebastian, FL 32958',description:'Open mic night at Pareidolia Brewing Company. Confirm with the venue before heading out.',source:'https://business.sebastianchamber.com/community-calendar',sourceLabel:'Sebastian River Area Chamber calendar'},
+ {id:'m87',category:'music',name:'Open Jam Night',area:'Tiki Bar & Grill • Sebastian',date:'Monday, November 23, 2026',time:'6:00 PM – 10:00 PM',address:'1130 Indian River Dr, Sebastian, FL 32958',description:'Weekly community open jam night at Tiki Bar & Grill. Check the venue for schedule changes.',source:'https://business.sebastianchamber.com/community-calendar',sourceLabel:'Sebastian River Area Chamber calendar'},
+ {id:'m88',category:'music',name:'DJ Big B',area:'Tiki Bar & Grill • Sebastian',date:'Tuesday, November 24, 2026',time:'6:00 PM – 10:00 PM',address:'1130 Indian River Dr, Sebastian, FL 32958',description:'DJ Big B on stage at Tiki Bar & Grill. Listed as a recurring Tuesday event on the Chamber calendar.',source:'https://business.sebastianchamber.com/community-calendar',sourceLabel:'Sebastian River Area Chamber calendar'},
+ {id:'m89',category:'music',name:'Open Mic with Robert & Friends',area:'Pareidolia Brewing Company • Sebastian',date:'Wednesday, November 25, 2026',time:'6:00 PM – 9:00 PM',address:'712 Cleveland St, Sebastian, FL 32958',description:'Open mic night at Pareidolia Brewing Company. Confirm with the venue before heading out.',source:'https://business.sebastianchamber.com/community-calendar',sourceLabel:'Sebastian River Area Chamber calendar'},
+ {id:'m90',category:'music',name:'Open Jam Night',area:'Tiki Bar & Grill • Sebastian',date:'Monday, November 30, 2026',time:'6:00 PM – 10:00 PM',address:'1130 Indian River Dr, Sebastian, FL 32958',description:'Weekly community open jam night at Tiki Bar & Grill. Check the venue for schedule changes.',source:'https://business.sebastianchamber.com/community-calendar',sourceLabel:'Sebastian River Area Chamber calendar'},
+ {id:'m91',category:'music',name:'SteelHouse',area:'Riverside Theatre – Live in the Loop • Vero Beach',date:'Saturday, November 21, 2026',time:'5:30 PM – 8:30 PM',address:'3250 Riverside Park Dr, Vero Beach, FL 32963',description:'Rock, punk and pop at Riverside Theatre’s Live in the Loop outdoor concert series.',source:'https://riversidetheatre.squarespace.com/loop-music-calendar/2026/11/21/steelhouse',sourceLabel:'Riverside Theatre official Loop calendar'},
+
+
+ {id:'s31',category:'specials',name:'Carrabba’s Italian Grill — Daily Bar Happy Hour',area:'Vero Beach',address:'1285 US-1, Vero Beach, FL 32960',featuredDays:[0,1,2,3,4,5,6],description:'DAILY, 4–7 PM in the bar area: listed offers include $5 spinach arancini and zucchini fritte, $7 lasagne dip and mezzaluna fritte, $3 Michelob Ultra and Peroni, and select wines and cocktails from $5. Confirm current menu and pricing with the restaurant.',source:'https://www.seeyathere.com/happy-hours/vero-beach-fl',sourceLabel:'See Ya There Vero Beach happy-hour guide, updated Nov 4, 2026'},
+ {id:'s32',category:'specials',name:'The Wave Kitchen & Bar — Daily Happy Hour',area:'Vero Beach',address:'3244 Ocean Dr, Vero Beach, FL 32963',featuredDays:[0,1,2,3,4,5,6],description:'DAILY, 3–5 PM: Listed happy-hour menu includes tortilla chips and salsa $5, spinach-artichoke dip $7, pretzel bites $7, black bean hummus $7, coconut shrimp $8, draft beer $5, house wine $6 and well drinks $7. Verify current menu and prices.',source:'https://www.seeyathere.com/happy-hours/vero-beach-fl',sourceLabel:'See Ya There Vero Beach happy-hour guide, updated Nov 2, 2026'},
+ {id:'s33',category:'specials',name:'Curfew Vero Beach — Daily Social Hour',area:'Vero Beach',address:'1932 14th Ave, Vero Beach, FL 32960',featuredDays:[0,1,2,3,4,5,6],description:'DAILY from opening until 6 PM: Social-hour menu lists shareable bites such as edamame hummus, pickle fries, fried spinach, deviled eggs and pimento cheese, plus select wine, well spirits and cocktails. Check the current menu for prices and availability.',source:'https://www.seeyathere.com/happy-hours/vero-beach-fl',sourceLabel:'See Ya There Vero Beach happy-hour guide, updated Oct 25, 2026'},
+ {id:'s34',category:'specials',name:'Mulligan’s Beach House — Vero Beach Happy Hour',area:'Vero Beach',address:'1025 Beachland Blvd, Vero Beach, FL 32963',featuredDays:[0,1,2,3,4,5,6],description:'DAILY, 3–6 PM: Local happy-hour guide lists $3 domestic drafts, $3 well drinks, $3 house wine and $5 mixed drinks and margaritas, plus food specials. Confirm current offer and menu with the Vero Beach location.',source:'https://www.seeyathere.com/happy-hours/vero-beach-fl',sourceLabel:'See Ya There Vero Beach happy-hour guide, updated Nov 2, 2026'},
+ {id:'s35',category:'specials',name:'Chili’s Grill & Bar — Weekday Happy Hour',area:'Vero Beach',address:'940 US Hwy 1, Vero Beach, FL 32960',featuredDays:[1,2,3,4,5],description:'MONDAY–FRIDAY, 3–6 PM: Listed offers include $3 domestic draft beers, $4 Modelo and other select beers, $6 margarita of the month, $7 tequila classic margarita and $5 house red or white wine. Check current menu and bar-area restrictions.',source:'https://www.seeyathere.com/happy-hours/vero-beach-fl',sourceLabel:'See Ya There Vero Beach happy-hour guide, updated Oct 25, 2026'},
+
 ];
 
 const areas = ['Sebastian', 'Vero Beach'];
@@ -341,6 +351,20 @@ function showIsUpcoming(item, now=new Date()) {
  return start>now;
 }
 
+function specialAppliesOn(item, day) {
+ const text=(item.description||'').toLowerCase();
+ if(Array.isArray(item.featuredDays)) return item.featuredDays.includes(day);
+ if(/daily|every day|all day, every day/.test(text)) return true;
+ const days=['sunday','monday','tuesday','wednesday','thursday','friday','saturday'];
+ const found=days.map((name,index)=>text.includes(name)?index:-1).filter(index=>index>=0);
+ const range=text.match(/(sunday|monday|tuesday|wednesday|thursday|friday|saturday)\\s*(?:-|–|through|to)\\s*(sunday|monday|tuesday|wednesday|thursday|friday|saturday)/);
+ if(range) {
+  const start=days.indexOf(range[1]), end=days.indexOf(range[2]);
+  for(let n=start;;n=(n+1)%7){if(n===day)return true;if(n===end)break;}
+ }
+ return found.length===0||found.includes(day);
+}
+
 function Button({label,onPress,outline=false}) { return <Pressable onPress={onPress} style={[s.button,outline&&s.outline]}><Text style={[s.buttonText,outline&&s.outlineText]}>{label}</Text></Pressable>; }
 
 // Keep a visible photo on every listing if an original image host is unavailable.
@@ -359,6 +383,7 @@ export default function App() {
  const [section,setSection]=useState('restaurants');
  const [query,setQuery]=useState('');
  const [musicFilter,setMusicFilter]=useState('all');
+ const [specialsFilter,setSpecialsFilter]=useState('all');
  const [areaFilter,setAreaFilter]=useState('all');
  const [published,setPublished]=useState('Welcome to Treasure Coast Happenings! Check back for this week’s restaurant specials, live music and local events.');
  const [weeklyDraft,setWeeklyDraft]=useState(()=>{try{return typeof localStorage!=='undefined'?localStorage.getItem('tch-weekly-draft')||'':'';}catch{return '';}});
@@ -378,6 +403,7 @@ export default function App() {
   weekendEnd.setDate(weekendStart.getDate()+2);
   return listings.filter(x=>{
    if(x.category!==section||!(x.name+' '+x.area+' '+(x.description||'')).toLowerCase().includes(query.toLowerCase())||(areaFilter!=='all'&&!(x.area||'').toLowerCase().includes(areaFilter.toLowerCase()))) return false;
+   if(section==='specials'&&specialsFilter!=='all') { const selectedDay=specialsFilter==='today'?now.getDay():Number(specialsFilter); if(!specialAppliesOn(x,selectedDay)) return false; }
    if(section!=='music') return true;
    const eventDate=new Date(x.date||'');
    if(Number.isNaN(eventDate.getTime())||!showIsUpcoming(x,now)) return false;
@@ -396,9 +422,9 @@ export default function App() {
    }
    return Number(!!b.sponsored)-Number(!!a.sponsored);
   });
- },[section,query,musicFilter,areaFilter]);
+ },[section,query,musicFilter,specialsFilter,areaFilter]);
  const home=()=>{setScreen('home');setQuery('');};
- const open=(id)=>{setSection(id);setQuery('');setMusicFilter('all');setAreaFilter('all');setScreen('list');};
+ const open=(id)=>{setSection(id);setQuery('');setMusicFilter('all');setSpecialsFilter('all');setAreaFilter('all');setScreen('list');};
  return <SafeAreaView style={s.safe}><StatusBar barStyle="dark-content"/>
   <View style={s.header}><Pressable onPress={home}><Text style={s.brand}>TREASURE COAST <Text style={{color:C.gold}}>HAPPENINGS</Text></Text></Pressable><Pressable onPress={()=>setScreen('advertise')}><Text style={s.headerLink}>ADVERTISE</Text></Pressable></View>
   {screen==='home'&&<ScrollView showsVerticalScrollIndicator={false}>
@@ -410,8 +436,8 @@ export default function App() {
     <Pressable onPress={()=>open('music')}><Text style={s.highlightLink}>SEE ALL LIVE MUSIC →</Text></Pressable>
    </View>
    <View style={s.highlightPanel}>
-    <View style={s.highlightHeader}><View><Text style={s.eyebrow}>LOCAL DEALS</Text><Text style={s.highlightTitle}>Today’s Best Deals</Text></View><Text style={s.highlightCount}>{listings.filter(x=>x.category==='specials'&&x.featuredDays?.includes(new Date().getDay())).length} DEALS</Text></View>
-    {listings.filter(x=>x.category==='specials'&&x.featuredDays?.includes(new Date().getDay())).slice(0,4).map(x=><Pressable key={x.id} style={s.highlightRow} onPress={()=>{setDetail(x);setSection('specials');setScreen('detail')}}><View style={s.highlightDotGold}/><View style={s.highlightTextWrap}><Text style={s.highlightItemTitle}>{x.name.split(' — ')[0]}</Text><Text style={s.highlightMeta}>{(x.description||'').split('. ')[0]}</Text></View><Text style={s.highlightArrow}>→</Text></Pressable>)}
+    <View style={s.highlightHeader}><View><Text style={s.eyebrow}>LOCAL DEALS</Text><Text style={s.highlightTitle}>Today’s Best Deals</Text></View><Text style={s.highlightCount}>{listings.filter(x=>x.category==='specials'&&specialAppliesOn(x,new Date().getDay())).length} DEALS</Text></View>
+    {listings.filter(x=>x.category==='specials'&&specialAppliesOn(x,new Date().getDay())).slice(0,4).map(x=><Pressable key={x.id} style={s.highlightRow} onPress={()=>{setDetail(x);setSection('specials');setScreen('detail')}}><View style={s.highlightDotGold}/><View style={s.highlightTextWrap}><Text style={s.highlightItemTitle}>{x.name.split(' — ')[0]}</Text><Text style={s.highlightMeta}>{(x.description||'').split('. ')[0]}</Text></View><Text style={s.highlightArrow}>→</Text></Pressable>)}
     <Pressable onPress={()=>open('specials')}><Text style={s.highlightLink}>BROWSE ALL FOOD & DRINK SPECIALS →</Text></Pressable>
    </View>
    <View style={s.sectionHead}><Text style={s.heading}>Discover the Coast</Text><Text style={s.muted}>A little something for every day.</Text></View>
