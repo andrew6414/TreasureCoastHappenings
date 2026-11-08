@@ -128,13 +128,24 @@ export default function App() {
   weekendEnd.setDate(weekendStart.getDate()+2);
   return listings.filter(x=>{
    if(x.category!==section||!(x.name+' '+x.area+' '+(x.description||'')).toLowerCase().includes(query.toLowerCase())) return false;
-   if(section!=='music'||musicFilter==='all') return true;
+   if(section!=='music') return true;
    const eventDate=new Date(x.date||'');
-   if(Number.isNaN(eventDate.getTime())) return false;
+   if(Number.isNaN(eventDate.getTime())||!showIsUpcoming(x,now)) return false;
    const dateOnly=new Date(eventDate.getFullYear(),eventDate.getMonth(),eventDate.getDate());
-   if(musicFilter==='tonight') return dateOnly.getTime()===today.getTime()&&(!x.time||/([5-9]|1[0-2])(?::[0-5][0-9])?\\s*PM/i.test(x.time))&&showIsUpcoming(x,now);
-   return dateOnly>=weekendStart&&dateOnly<=weekendEnd&&showIsUpcoming(x,now);
-  }).sort((a,b)=>Number(!!b.sponsored)-Number(!!a.sponsored));
+   if(musicFilter==='tonight') return dateOnly.getTime()===today.getTime()&&(!x.time||/([5-9]|1[0-2])(?::[0-5][0-9])?\\s*PM/i.test(x.time));
+   if(musicFilter==='weekend') return dateOnly>=weekendStart&&dateOnly<=weekendEnd;
+   return true;
+  }).sort((a,b)=>{
+   if(section==='music') {
+    const dateA=new Date(a.date||'').getTime(), dateB=new Date(b.date||'').getTime();
+    if(dateA!==dateB) return dateA-dateB;
+    const timeA=(a.time||'').match(/(\\d{1,2})(?::([0-5]\\d))?\\s*(AM|PM)/i);
+    const timeB=(b.time||'').match(/(\\d{1,2})(?::([0-5]\\d))?\\s*(AM|PM)/i);
+    const minutes=(m)=>m?((Number(m[1])%12)+(m[3].toUpperCase()==='PM'?12:0))*60+Number(m[2]||0):0;
+    return minutes(timeA)-minutes(timeB);
+   }
+   return Number(!!b.sponsored)-Number(!!a.sponsored);
+  });
  },[section,query,musicFilter]);
  const home=()=>{setScreen('home');setQuery('');};
  const open=(id)=>{setSection(id);setQuery('');setMusicFilter('all');setScreen('list');};
