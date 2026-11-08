@@ -34,6 +34,8 @@ jobs:
         run: npx expo export --platform web
       - name: Add agency website
         run: mkdir -p dist/studio && cp -R studio/. dist/studio/
+      - name: Add JobMargin website
+        run: mkdir -p dist/jobmargin && cp -R jobmargin/. dist/jobmargin/
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
