@@ -90,6 +90,21 @@ function listingPhoto(item) {
  return PHOTO.sebastian;
 }
 
+function showIsUpcoming(item, now=new Date()) {
+ const eventDate=new Date(item.date||'');
+ if(Number.isNaN(eventDate.getTime())) return false;
+ const match=(item.time||'').match(/(\\d{1,2})(?::([0-5]\\d))?\\s*(AM|PM)/i);
+ if(!match) {
+  const dateOnly=new Date(eventDate.getFullYear(),eventDate.getMonth(),eventDate.getDate());
+  const today=new Date(now.getFullYear(),now.getMonth(),now.getDate());
+  return dateOnly>=today;
+ }
+ let hour=Number(match[1])%12;
+ if(match[3].toUpperCase()==='PM') hour+=12;
+ const start=new Date(eventDate.getFullYear(),eventDate.getMonth(),eventDate.getDate(),hour,Number(match[2]||0));
+ return start>now;
+}
+
 function Button({label,onPress,outline=false}) { return <Pressable onPress={onPress} style={[s.button,outline&&s.outline]}><Text style={[s.buttonText,outline&&s.outlineText]}>{label}</Text></Pressable>; }
 
 export default function App() {
@@ -117,8 +132,8 @@ export default function App() {
    const eventDate=new Date(x.date||'');
    if(Number.isNaN(eventDate.getTime())) return false;
    const dateOnly=new Date(eventDate.getFullYear(),eventDate.getMonth(),eventDate.getDate());
-   if(musicFilter==='tonight') return dateOnly.getTime()===today.getTime()&&(!x.time||/([5-9]|1[0-2])(?::[0-5][0-9])?\\s*PM/i.test(x.time));
-   return dateOnly>=weekendStart&&dateOnly<=weekendEnd;
+   if(musicFilter==='tonight') return dateOnly.getTime()===today.getTime()&&(!x.time||/([5-9]|1[0-2])(?::[0-5][0-9])?\\s*PM/i.test(x.time))&&showIsUpcoming(x,now);
+   return dateOnly>=weekendStart&&dateOnly<=weekendEnd&&showIsUpcoming(x,now);
   }).sort((a,b)=>Number(!!b.sponsored)-Number(!!a.sponsored));
  },[section,query,musicFilter]);
  const home=()=>{setScreen('home');setQuery('');};
