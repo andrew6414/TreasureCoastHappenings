@@ -32,6 +32,8 @@ jobs:
         run: npx expo install react-dom react-native-web @expo/metro-runtime
       - name: Export web app
         run: npx expo export --platform web
+      - name: Add agency website
+        run: mkdir -p dist/studio && cp -R studio/. dist/studio/
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
