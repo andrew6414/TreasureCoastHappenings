@@ -41,6 +41,8 @@ const listings = [
  {id:'s5',category:'specials',name:'On the Edge Bar & Grill — Daily Specials',area:'Fort Pierce',address:'1136 Seaway Dr, Fort Pierce, FL 34949',phone:'(772) 882-9729',description:'The restaurant advertises weekday happy hour Monday–Friday, 3–6 PM, plus rotating daily specials: Monday burger of the week $13; Tuesday tacos $12 with a 12-ounce draft beer or well cocktail; Wednesday wings $1.25 each and $15 pitchers; Thursday $5 shots; weekend platter specials from $22. Offers and availability may change; confirm before visiting.',source:'https://ontheedgebarandgrill.com/',sourceLabel:'Official daily specials'}
 ];
 
+const areas = ['Sebastian', 'Vero Beach', 'Fort Pierce', 'Stuart'];
+
 const PHOTO = {
  sebastian: {uri:'https://commons.wikimedia.org/wiki/Special:FilePath/SebastianInletStatePark.jpg?width=1100',caption:'Sebastian Inlet area photo',credit:'Stephen Lea — CC BY-SA 2.5',source:'https://commons.wikimedia.org/wiki/File:SebastianInletStatePark.jpg'},
  fortpierce: {uri:'https://commons.wikimedia.org/wiki/Special:FilePath/Fort_Pierce_beach_looking_south_at_Jetty_Park.jpeg?width=1100',caption:'Fort Pierce area photo',credit:'Dough4872 — CC BY-SA 4.0',source:'https://commons.wikimedia.org/wiki/File:Fort_Pierce_beach_looking_south_at_Jetty_Park.jpeg'},
@@ -127,6 +129,7 @@ export default function App() {
  const [musicFilter,setMusicFilter]=useState('all');
  const [areaFilter,setAreaFilter]=useState('all');
  const [published,setPublished]=useState('Welcome to Treasure Coast Happenings! Check back for this week’s restaurant specials, live music and local events.');
+ const [weeklyDraft,setWeeklyDraft]=useState('');
  useEffect(()=>{fetch('https://raw.githubusercontent.com/andrew6414/TreasureCoastHappenings/main/content/weekly-update.md').then(r=>r.ok?r.text():Promise.reject()).then(t=>setPublished(t.replace(/^#\s*/, '').replace(/\n---[\s\S]*$/, '').trim())).catch(()=>{});},[]);
  const [detail,setDetail]=useState(null);
  const active=sections.find(x=>x.id===section);
@@ -141,7 +144,7 @@ export default function App() {
   const weekendEnd=new Date(weekendStart);
   weekendEnd.setDate(weekendStart.getDate()+2);
   return listings.filter(x=>{
-   if(x.category!==section||!(x.name+' '+x.area+' '+(x.description||'')).toLowerCase().includes(query.toLowerCase())) return false;
+   if(x.category!==section||!(x.name+' '+x.area+' '+(x.description||'')).toLowerCase().includes(query.toLowerCase())||(areaFilter!=='all'&&!(x.area||'').toLowerCase().includes(areaFilter.toLowerCase()))) return false;
    if(section!=='music') return true;
    const eventDate=new Date(x.date||'');
    if(Number.isNaN(eventDate.getTime())||!showIsUpcoming(x,now)) return false;
@@ -160,7 +163,7 @@ export default function App() {
    }
    return Number(!!b.sponsored)-Number(!!a.sponsored);
   });
- },[section,query,musicFilter]);
+ },[section,query,musicFilter,areaFilter]);
  const home=()=>{setScreen('home');setQuery('');};
  const open=(id)=>{setSection(id);setQuery('');setMusicFilter('all');setAreaFilter('all');setScreen('list');};
  return <SafeAreaView style={s.safe}><StatusBar barStyle="dark-content"/>
