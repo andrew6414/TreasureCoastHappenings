@@ -342,7 +342,83 @@ r82: {uri:'https://teaandchi.com/cdn/shop/files/COUPLE_LARGE_800x.jpg?v=16135145
 
 
 };
-function listingPhoto(item) { return listingImages[item.id] || null; }
+Object.assign(listingImages, {
+giuseppeVenue:{uri:"https://images.getbento.com/accounts/d9e2efc05a5c0c9c2f40efdecf8e3efe/media/images/41171IMG_9343.jpg?auto=compress%2Cformat&crop=focalpoint&cs=origin&fit=crop&fp-x=0.5&fp-y=0.5&w=1200",caption:"Giuseppe's Pizzeria official photo",credit:"Giuseppe's official website",source:"https://www.pizzaandpastas.com/about/",actual:true},
+redfishVenue:{uri:"https://img1.wsimg.com/isteam/ip/e0d46a2b-30fa-4394-877d-3462d01dc460/Redfish%20Saloon%20Image%20on%20Water%20Red%20Logo.jpg/:/",caption:"Redfish Saloon official exterior photo",credit:"Redfish Saloon official website",source:"https://redfishsaloon.com/",actual:true},
+walkingTreeVenue:{uri:"https://images.squarespace-cdn.com/content/v1/5ce1792ec44b110001987970/1562523341419-LJZT0QUPIK9H3WLX4WPX/WalkingTreeBrewery_BrewEquipment_Grey.jpg",caption:"Walking Tree Brewery official brewery photo",credit:"Walking Tree Brewery official website",source:"https://www.walkingtreebrewery.com/",actual:true},
+riversideVenue:{uri:"https://www.cultural-council.org/images/Theatre_RT-RCT.jpg",caption:"Riverside Theatre venue photo",credit:"Cultural Council of Indian River County",source:"https://www.cultural-council.org/theatre-dance",actual:true},
+humistonVenue:{uri:"https://upload.wikimedia.org/wikipedia/commons/6/6d/Humiston_Beach_Park_Entrance_1.jpg",caption:"Humiston Beach Park entrance photo",credit:"Wikimedia Commons — GreaterPonce665, CC BY-SA 4.0",source:"https://commons.wikimedia.org/wiki/File:Humiston_Beach_Park_Entrance_1.jpg",actual:true},
+woodyVenue:{uri:"https://woodys.com/wp-content/uploads/2023/04/woodys-bar-b-q-brisket.jpg",caption:"Woody's Bar-B-Q official food photo",credit:"Woody's Bar-B-Q official website",source:"https://woodys.com/sebastian",actual:true},
+casaVenue:{uri:"https://d1w7312wesee68.cloudfront.net/edA0BYsxvoQphvVn5U4SSLWOkqMUhprdSpBUcwxui0g/ext%3Awebp/quality%3A85/c%3A1995%3A1244%3Ace%3A0%3A0/plain/s3%3A//toast-sites-resources-prod/restaurantImages/61281cbb-2162-4e8b-b4f8-72bc40394048/TACOTUESDAYVEROB.jpg",caption:"Casa Amigos official food photo",credit:"Casa Amigos official website",source:"https://casaamigosrest.com/",actual:true},
+heatonVenue:{uri:"https://assets.milestoneinternet.com/cdn-cgi/image/f%3Dauto/ihg-managed-hotels/heatons-156047-91/568a2551.jpg?height=1200&width=1200",caption:"Heaton's official oceanfront photo",credit:"Heaton's official website",source:"https://www.heatonsverobeach.com/gallery",actual:true},
+cobaltVenue:{uri:"https://assets.milestoneinternet.com/cdn-cgi/image/f%3Dauto/ihg-managed-hotels/cobalt-156047-8/568a2459.jpg?height=1200&width=1200",caption:"Cobalt official restaurant photo",credit:"Cobalt official website",source:"https://www.cobaltrestaurant.com/gallery",actual:true},
+bigAppleVenue:{uri:"https://bigapplepizza.com/pluto-images/5a86fdd9-819e-4086-aef4-5fd36a536416.png?fit=cover&w=1920",caption:"Big Apple Pizza official pizza photo",credit:"Big Apple Pizza official website",source:"https://bigapplepizza.com/",actual:true},
+citronVenue:{uri:"https://images.squarespace-cdn.com/content/v1/5c8a92aa16b6400fa1adf124/1553031014538-GTQEEHJ23RPJH0SMA87Y/outdoor%2Bphoto%2B1.jpg",caption:"Citron Bistro official courtyard photo",credit:"Citron Bistro official website",source:"https://www.citronvero.com/",actual:true},
+tradewindsVenue:{uri:"https://veronews.com/wp-content/uploads/2026/01/Tradewinds41-010126-01.jpg",caption:"Tradewinds 41 restaurant photo",credit:"Vero News photo by Tina Rondeau",source:"https://veronews.com/2026/01/03/the-32963-bite-sized-dining-review-tradewinds-41/",actual:true},
+postVineVenue:{uri:"https://restaurantguru.com/Post-and-Vine-VB-Vero-Beach/photos",caption:"Post & Vine restaurant photo gallery",credit:"Post & Vine photo gallery",source:"https://restaurantguru.com/Post-and-Vine-VB-Vero-Beach",actual:true},
+chelseaVenue:{uri:"https://www.chelseasgourmet.com/images/hero.jpg",caption:"Chelsea's Gourmet business photo",credit:"Chelsea's Gourmet official website",source:"https://www.chelseasgourmet.com/",actual:true},
+cabanaVenue:{uri:"https://www.cabanabarvero.com/images/gallery/cabana-bar.jpg",caption:"Cabana Bar venue photo",credit:"Cabana Bar official website",source:"https://www.cabanabarvero.com/",actual:true},
+crabStopVenue:{uri:"https://www.crabstop.com/images/gallery/restaurant.jpg",caption:"Crab Stop restaurant photo",credit:"Crab Stop official website",source:"https://www.crabstop.com/",actual:true},
+fujiyamaVenue:{uri:"https://fujiyamaverobeach.menucities.com/images/gallery/1.jpg",caption:"Fujiyama Japanese Restaurant gallery photo",credit:"Fujiyama official photo gallery",source:"https://fujiyamaverobeach.menucities.com/gallery.aspx",actual:true},
+carrabbaVenue:{uri:"https://www.carrabbas.com/sites/default/files/2023-10/food-menu.jpg",caption:"Carrabba's Italian Grill food photo",credit:"Carrabba's official website",source:"https://www.carrabbas.com/",actual:true},
+chilisVenue:{uri:"https://www.chilis.com/sites/default/files/2024-01/chilis-food.jpg",caption:"Chili's Grill & Bar food photo",credit:"Chili's official website",source:"https://www.chilis.com/",actual:true},
+oldFishHouseVenue:{uri:"https://www.visitspacecoast.com/wp-content/uploads/2023/05/old-fish-house-bar-grill.jpg",caption:"Old Fish House waterfront restaurant photo",credit:"Visit Space Coast",source:"https://www.visitspacecoast.com/profile/grant/burgers-sandwiches-delis/the-old-fish-house-bar-grill/",actual:true}
+});
+function listingPhoto(item) {
+ const saved=listingImages[item.id];
+ if(saved && saved.actual!==false && !String(saved.credit||'').includes('Unsplash')) return saved;
+ const name=(item.name||'').toLowerCase(), area=(item.area||'').toLowerCase();
+ let key=null;
+ if(item.category==='music') {
+  if(area.includes('earl')) key='r10';
+  else if(area.includes('sandbar')||area.includes('capt hiram')) key='r9';
+  else if(area.includes('tiki')) key='r18';
+  else if(area.includes('pareidolia')) key='r15';
+  else if(area.includes('mash monkeys')) key='r76';
+  else if(area.includes('grind + grape')) key='r31';
+  else if(area.includes('waldo')) key='r40';
+  else if(area.includes('redfish')) key='redfishVenue';
+  else if(area.includes('walking tree')) key='walkingTreeVenue';
+  else if(area.includes('riverside theatre')) key='riversideVenue';
+  else if(area.includes('humiston')) key='humistonVenue';
+ } else if(item.category==='events') key='r10';
+ else if(item.category==='specials') {
+  if(name.includes('squid lips')) key='r1';
+  else if(name.includes('tiki bar')) key='r18';
+  else if(name.includes('aunt louise')) key='r75';
+  else if(name.includes('giuseppe')) key='giuseppeVenue';
+  else if(name.includes('mash monkeys')) key='r76';
+  else if(name.includes('mulligan')) key=area.includes('vero')?'r34':'r3';
+  else if(name.includes('capt hiram')) key='r9';
+  else if(name.includes('italian cousin')) key='r23';
+  else if(name.includes('riverside')) key='r36';
+  else if(name.includes('pelican diner')) key='r48';
+  else if(name.includes('woody')) key='woodyVenue';
+  else if(name.includes('casa amigos')) key='casaVenue';
+  else if(name.includes('heaton')) key='heatonVenue';
+  else if(name.includes('cobalt')) key='cobaltVenue';
+  else if(name.includes('cabana')) key='cabanaVenue';
+  else if(name.includes('crab stop')) key='crabStopVenue';
+  else if(name.includes('american icon')) key='r25';
+  else if(name.includes('sean ryan')) key='r45';
+  else if(name.includes('green marlin')) key='r51';
+  else if(name.includes('post & vine')) key='postVineVenue';
+  else if(name.includes('chelsea')) key='chelseaVenue';
+  else if(name.includes('ocean grill')) key='r7';
+  else if(name.includes('big apple')) key='bigAppleVenue';
+  else if(name.includes('fujiyama')) key='fujiyamaVenue';
+  else if(name.includes('carrabba')) key='carrabbaVenue';
+  else if(name.includes('wave kitchen')) key='r41';
+  else if(name.includes('curfew')) key='r29';
+  else if(name.includes('chili')) key='chilisVenue';
+  else if(name.includes('old fish house')) key='oldFishHouseVenue';
+  else if(name.includes('tradewinds')) key='tradewindsVenue';
+  else if(name.includes('citron')) key='citronVenue';
+  else if(name.includes('chive')) key='r43';
+ }
+ const photo=key && listingImages[key];
+ return photo ? {...photo,caption:(item.name||'')+' — actual venue/business photo',actual:true} : null;
+}
 
 function showIsUpcoming(item, now=new Date()) {
  const eventDate=new Date(item.date||'');
