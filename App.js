@@ -365,6 +365,14 @@ function specialAppliesOn(item, day) {
  return found.length===0||found.includes(day);
 }
 
+function isEveningShow(item) {
+ const match=(item.time||'').match(/(\d{1,2})(?::([0-5]\d))?\s*(AM|PM)/i);
+ if(!match) return true;
+ let hour=Number(match[1])%12;
+ if(match[3].toUpperCase()==='PM') hour+=12;
+ return hour>=16||hour<2;
+}
+
 function Button({label,onPress,outline=false}) { return <Pressable onPress={onPress} style={[s.button,outline&&s.outline]}><Text style={[s.buttonText,outline&&s.outlineText]}>{label}</Text></Pressable>; }
 
 // Keep a visible photo on every listing if an original image host is unavailable.
@@ -408,7 +416,7 @@ export default function App() {
    const eventDate=new Date(x.date||'');
    if(Number.isNaN(eventDate.getTime())||!showIsUpcoming(x,now)) return false;
    const dateOnly=new Date(eventDate.getFullYear(),eventDate.getMonth(),eventDate.getDate());
-   if(musicFilter==='tonight') return dateOnly.getTime()===today.getTime()&&(!x.time||/([5-9]|1[0-2])(?::[0-5][0-9])?\s*PM/i.test(x.time));
+   if(musicFilter==='tonight') return dateOnly.getTime()===today.getTime()&&isEveningShow(x);
    if(musicFilter==='weekend') return dateOnly>=weekendStart&&dateOnly<=weekendEnd;
    return true;
   }).sort((a,b)=>{
@@ -430,9 +438,9 @@ export default function App() {
   {screen==='home'&&<ScrollView showsVerticalScrollIndicator={false}>
    <View style={s.hero}><Text style={s.eyebrow}>YOUR SEBASTIAN & VERO BEACH GUIDE</Text><Text style={s.heroTitle}>Good food.{'\n'}Great music.{'\n'}What's happening.</Text><Text style={s.heroCopy}>Discover restaurants, food specials, live music and local events in Sebastian and Vero Beach only.</Text><Button label="EXPLORE HAPPENINGS  →" onPress={()=>open('events')}/></View>
    <View style={s.highlightPanel}>
-    <View style={s.highlightHeader}><View><Text style={s.eyebrow}>HAPPENING TODAY</Text><Text style={s.highlightTitle}>Tonight’s Live Music</Text></View><Text style={s.highlightCount}>{listings.filter(x=>x.category==='music'&&new Date(x.date||'').toDateString()===new Date().toDateString()&&showIsUpcoming(x)).length} SHOWS</Text></View>
-    {listings.filter(x=>x.category==='music'&&new Date(x.date||'').toDateString()===new Date().toDateString()&&showIsUpcoming(x)).slice(0,3).map(x=><Pressable key={x.id} style={s.highlightRow} onPress={()=>{setDetail(x);setSection('music');setScreen('detail')}}><View style={s.highlightDot}/><View style={s.highlightTextWrap}><Text style={s.highlightItemTitle}>{x.name}</Text><Text style={s.highlightMeta}>{x.area} · {x.time||'Time not listed'}</Text></View><Text style={s.highlightArrow}>→</Text></Pressable>)}
-    {listings.filter(x=>x.category==='music'&&new Date(x.date||'').toDateString()===new Date().toDateString()&&showIsUpcoming(x)).length===0&&<Text style={s.highlightEmpty}>No confirmed shows listed for tonight yet. Browse the full calendar for upcoming dates.</Text>}
+    <View style={s.highlightHeader}><View><Text style={s.eyebrow}>HAPPENING TODAY</Text><Text style={s.highlightTitle}>Tonight’s Live Music</Text></View><Text style={s.highlightCount}>{listings.filter(x=>x.category==='music'&&new Date(x.date||'').toDateString()===new Date().toDateString()&&showIsUpcoming(x)&&isEveningShow(x)).length} SHOWS</Text></View>
+    {listings.filter(x=>x.category==='music'&&new Date(x.date||'').toDateString()===new Date().toDateString()&&showIsUpcoming(x)&&isEveningShow(x)).slice(0,3).map(x=><Pressable key={x.id} style={s.highlightRow} onPress={()=>{setDetail(x);setSection('music');setScreen('detail')}}><View style={s.highlightDot}/><View style={s.highlightTextWrap}><Text style={s.highlightItemTitle}>{x.name}</Text><Text style={s.highlightMeta}>{x.area} · {x.time||'Time not listed'}</Text></View><Text style={s.highlightArrow}>→</Text></Pressable>)}
+    {listings.filter(x=>x.category==='music'&&new Date(x.date||'').toDateString()===new Date().toDateString()&&showIsUpcoming(x)&&isEveningShow(x)).length===0&&<Text style={s.highlightEmpty}>No confirmed shows listed for tonight yet. Browse the full calendar for upcoming dates.</Text>}
     <Pressable onPress={()=>open('music')}><Text style={s.highlightLink}>SEE ALL LIVE MUSIC →</Text></Pressable>
    </View>
    <View style={s.highlightPanel}>
