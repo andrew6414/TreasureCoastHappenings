@@ -78,6 +78,7 @@ const listingImages = {
  m12: {uri:'https://images.unsplash.com/photo-1507874457470-272b3c8d8ee2?w=1200&auto=format&fit=crop',caption:'Concert crowd photo',credit:'Unsplash — free-to-use photo',source:'https://unsplash.com/license'},
  m13: {uri:'https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?w=1200&auto=format&fit=crop',caption:'Outdoor live music photo',credit:'Unsplash — free-to-use photo',source:'https://unsplash.com/license'},
  e1: {uri:'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=1200&auto=format&fit=crop',caption:'Live music venue photo',credit:'Unsplash — free-to-use photo',source:'https://unsplash.com/license',actual:false}
+};
 function listingPhoto(item) {
  if(listingImages[item.id]) return listingImages[item.id];
  if(item.category==='music') return PHOTO.music;
