@@ -440,7 +440,7 @@ function listingPhoto(item) {
   else if(name.includes('chive')) key='r43';
  }
  const photo=key && listingImages[key];
- return photo ? {...photo,caption:(item.name||'')+' — actual venue/business photo',actual:true} : null;
+ return photo ? {...photo,caption:item.category==='music' ? (item.name||'')+' — venue photo, not a performer photo' : item.category==='events' ? (item.name||'')+' — event location photo' : (item.name||'')+' — business photo',actual:true} : null;
 }
 
 function showIsUpcoming(item, now=new Date()) {
